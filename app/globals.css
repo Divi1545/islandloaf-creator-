@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --electric: 190 100% 50%;
+    --surface: 230 18% 8%;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-surface-950 text-gray-100 font-sans;
+  }
+
+  ::selection {
+    @apply bg-electric/30 text-white;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface-600;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-surface-900/60 backdrop-blur-xl border border-surface-700/50;
+  }
+
+  .glass-card {
+    @apply glass rounded-2xl p-6;
+  }
+
+  .glow-electric {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.15), 0 0 60px rgba(0, 212, 255, 0.05);
+  }
+
+  .glow-electric-strong {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.3), 0 0 80px rgba(0, 212, 255, 0.1);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-electric to-brand-400 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl 
+           bg-gradient-to-r from-electric-600 to-brand-500 
+           text-white font-semibold text-sm
+           hover:from-electric-500 hover:to-brand-400
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-electric/50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl
+           bg-surface-800 border border-surface-600
+           text-gray-200 font-medium text-sm
+           hover:bg-surface-700 hover:border-surface-500
+           transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-surface-500/50;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl
+           bg-red-600/20 border border-red-500/30
+           text-red-400 font-medium text-sm
+           hover:bg-red-600/30 hover:border-red-500/50
+           transition-all duration-200;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl
+           bg-surface-800 border border-surface-600
+           text-gray-100 placeholder:text-surface-400
+           focus:outline-none focus:ring-2 focus:ring-electric/40 focus:border-electric-600
+           transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-electric {
+    @apply badge bg-electric/10 text-electric border border-electric/20;
+  }
+
+  .badge-success {
+    @apply badge bg-green-500/10 text-green-400 border border-green-500/20;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-500/10 text-yellow-400 border border-yellow-500/20;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+           text-surface-300 hover:text-white hover:bg-surface-800
+           transition-all duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link text-white bg-electric/10 border border-electric/20;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out both;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
